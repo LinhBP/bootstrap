@@ -9,8 +9,9 @@
     <style>
         :root {
             --red: #C01111;
-            --light-gray: #dddddd;
             --gray: #f3f3f3;
+            --dark-gray: #333333;
+            --light-gray: #dddddd;
         }
         body {
             font-family: 'Open Sans', sans-serif;
@@ -53,13 +54,39 @@
             z-index: 1;
             position: relative;
         }
+
+
+
         .creative-sign {
-            background-color: #C01111;
+            background-color: var(--red);
             color: white;
+            border-radius: 1rem;
+            position: relative;
         }
         .creative-sign .btn {
             background-color: white;
-            color: #C01111;
+            color: var(--red);
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .creative-sign .btn:hover {
+            background-color: var(--dark-gray);
+            color: white;
+        }
+        .talent-sign {
+            background-color: white;
+            color: var(--dark-gray);
+            border-radius: 1rem;
+            border: 1px solid var(--light-gray);
+            position: relative;
+        }
+        .talent-sign .btn {
+            color: white;
+            background-color: var(--dark-gray);
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .talent-sign .btn:hover {
+            background-color: var(--red);
+            color: white;
         }
         .circle-sub-title {
             position: absolute;
@@ -67,84 +94,166 @@
             border-radius: 50%;
             width: 3rem;
             height: 3rem;
-            background-color: #f3f3f3;
+            background-color: var(--gray);
             z-index: -1;
         }
-        .btn-primary {
-            background-color: black;
-            border: 0;
-            color: white;
+        .circle-decoration {
+            border-radius: 50%;
+            position: absolute;
         }
-        .plus-sign, .static-number {
-            color: #c01111;
+        .circle-red {
+            background-color: var(--red);
         }
+        .circle-gray {
+            background-color: var(--gray);
+        }
+        .circle-large {
+            width: 4rem;
+            height: 4rem;
+        }
+        .circle-small {
+            width: 2rem;
+            height: 2rem;
+        }
+
+
         .career-intro-content {
             background-color: rgba(216, 35, 41, 0.7);
         }
         .sun-circle {
             background-color: #d82329;
         }
-        .intro-wrapper {
+        .intro-section {
             position: relative;
-            margin-left: 3rem;
+            padding: 3rem;
         }
-        .intro-content {
-            padding: 2rem;
-            border-radius: 1rem;
+        .outer-wrapper {
+            position: relative;
             border: 6px solid var(--light-gray);
-            background-color: white;
-            z-index: 1;
+            border-radius: 1rem;
+            padding: 1rem;
+            z-index: 2;
         }
-        .intro-background {
+        .inner-wrapper {
+            position: relative;
+            padding: 2rem;
+            z-index: 3;
+        }
+        .inner-background {
+            position: absolute;
+            top: 10%;
+            left: -40px;
+            width: 40px;
+            height: 80%;
+            border-radius: 1rem 0rem 0rem 1rem;
+            z-index: 1;
+            border: 6px solid var(--light-gray);
+
+        }
+        .intro-image {
+            position: relative;
+            z-index: 3;
+            margin-top: -6rem;
+            margin-bottom: -6rem;
+        }
+        
+        .project-static h1 {
+            font-size: 4rem;
+            font-weight: bold;
+            margin-bottom: 0;
+            color: var(--red); /* Red color for the numbers */
+        }
+        .project-static .plus-sign {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--red); /* Red color for the plus signs */
+        }
+        .project-static h3 {
+            font-size: 1.25rem;
+            margin-top: 0;
+            color: var(--dark-gray); /* Dark gray color for the text */
+        }
+        .btn-primary {
+            background-color: var(--dark-gray);
+            border: 0;
+            color: white;
+            padding: 0.75rem 1.5rem;
+        }
+        .btn-primary:hover {
+            background-color: var(--red);
+        }
+        .carousel-inner .carousel-item {
+            position: relative;
+            top: 10px;
+        }
+        .carousel-inner .carousel-item img {
+            border-radius: 15px; /* Add rounded corners to the image */
+        }
+        .carousel-inner .carousel-item .overlay {
             position: absolute;
             top: 0;
-            left: -40px;
-            width: calc(100% + 40px);
+            left: 0;
+            width: 100%;
             height: 100%;
-            border: 6px solid var(--light-gray);
-            border-radius: 1rem;
-            z-index: 0;
+            background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent white overlay */
+            border-radius: 15px; /* Match the border radius of the image */
         }
-        .footer {
-            background-color: #f7f7f7;
-            padding: 5rem;
+        .carousel-caption {
+            position: absolute;
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: none; /* Remove background from the caption */
+            color: var(--dark-gray);
+            text-align: center;
         }
-        .footer .footer-img {
-            width: 9rem;
-            height: 3rem;
-            margin-right: 10rem;
-        }
-        .footer .footer-column > ul > li {
-            list-style-type: none;
-            padding-bottom: 2rem;
-        }
-        .footer .footer-column > ul > li > a {
-            color: gray;
-            text-decoration: none;
-        }
-        .footer .footer-column > ul > li > a:hover {
-            text-decoration: underline;
-        }
-        .footer .footer-column > h2 {
-            margin-bottom: 1rem;
-            z-index: 10;
+        .carousel-control-prev, .carousel-control-next {
             position: relative;
+            top: auto;
+            bottom: 0px;
+            color: var(--red);
+            background-color: var(--dark-gray);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        .footer .footer-column > h2::before {
+        .carousel-control-prev:hover, .carousel-control-next:hover {
+            background-color: var(--red);
+            color: white;
+        }
+        .carousel-control-prev-icon, .carousel-control-next-icon {
+            background-color: transparent;
+        }
+
+        .footer {
+            background-color: #f9f9f9;
+            padding: 2rem 0;
+        }
+        .footer .section-title {
+            font-weight: bold;
+            position: relative;
+            display: inline-block;
+            z-index: 1;
+
+        }
+        .footer .section-title::before {
             content: '';
             position: absolute;
-            width: 30px;
-            height: 30px;
-            background-color: var(--gray);
+            width: 3rem;
+            height: 3rem;
+            background-color: #dddddd;
             border-radius: 50%;
-            left: -40px;
             top: 50%;
             transform: translateY(-50%);
+            z-index: -1;
+            left: -1rem;
         }
-        .footer .footer-row {
-            display: flex;
-            gap: 5rem;
-            position: relative;
+        .footer a {
+            color: inherit;
+            text-decoration: none;
         }
         .join-us {
             position: fixed;
@@ -162,23 +271,31 @@
         }
     </style>
 </head>
+
 <body>
     <header class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm">
         <div class="container">
             <a class="navbar-brand" href="#">
                 <img src="./assets/logo-sun@2x.png" alt="" class="nav-img" style="width: 7.5rem; height: 2.5rem;">
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
                 <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link active" href="./main.html" data-en="Home" data-vi="Trang chủ">Trang chủ</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./aboutus.html" data-en="About Us" data-vi="Về chúng tôi">Về chúng tôi</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./project.html" data-en="Projects" data-vi="Dự án">Dự án</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./chance.html" data-en="Career Opportunities" data-vi="Cơ hội nghề nghiệp">Cơ hội nghề nghiệp</a></li>
-                    <li class="nav-item"><a class="nav-link" href="workingenvi.html" data-en="Working Environment" data-vi="Môi trường làm việc">Môi trường làm việc</a></li>
-                    <li class="nav-item"><a class="nav-link" href="new.html" data-en="News" data-vi="Tin tức">Tin tức</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="./main.html" data-en="Home"
+                            data-vi="Trang chủ">Trang chủ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./aboutus.html" data-en="About Us"
+                            data-vi="Về chúng tôi">Về chúng tôi</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./project.html" data-en="Projects" data-vi="Dự
+                            án">Dự án</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./chance.html" data-en="Career Opportunities"
+                            data-vi="Cơ hội nghề nghiệp">Cơ hội nghề nghiệp</a></li>
+                    <li class="nav-item"><a class="nav-link" href="workingenvi.html" data-en="Working Environment"
+                            data-vi="Môi trường làm việc">Môi trường làm việc</a></li>
+                    <li class="nav-item"><a class="nav-link" href="new.html" data-en="News" data-vi="Tin tức">Tin
+                            tức</a></li>
                 </ul>
                 <div class="d-flex align-items-center">
                     <button class="lang-option active-lang" data-lang="vi">VI</button>
@@ -194,75 +311,115 @@
         </div>
 
         <div class="content">
-            <section class="introduction">
-                <h1 class="intro-title" data-en="Business Areas" data-vi="Lĩnh vực kinh doanh">Lĩnh vực kinh doanh</h1>
-                <div class="row align-items-center position-relative">
-                    <div class="col-md-12 position-relative">
-                        <div class="intro-background"></div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="intro-wrapper">
-                            <p class="intro-text" data-en="As a Digital Creative Studio, Sun* always values product ownership and creative thinking in each project to bring the most 'Awesome' experiences to end-users. With two service lines: 'Creative & Engineering' and 'Talent Platform', Sun* has been creating great value for society through technology."
-                                data-vi="Là một Digital Creative Studio, Sun* luôn đề cao tinh thần làm chủ sản phẩm, tư duy sáng tạo trong mỗi dự án để mang đến những trải nghiệm 'Awesome' nhất cho end-user. Với hai dòng dịch vụ là 'Creative & Engineering' và 'Talent Platform', Sun* đã và đang từng bước cùng công nghệ tạo ra những giá trị tốt đẹp cho xã hội.">
-                                Là một Digital Creative Studio,                            Sun* luôn đề cao tinh thần làm chủ sản phẩm, tư duy sáng tạo trong mỗi dự án để mang đến những trải nghiệm 'Awesome' nhất cho end-user. Với hai dòng dịch vụ là 'Creative & Engineering' và 'Talent Platform', Sun* đã và đang từng bước cùng công nghệ tạo ra những giá trị tốt đẹp cho xã hội.
-                            </p>
+            <section class="intro-section">
+                <div class="container">
+                    <div class="outer-wrapper">
+                        <div class="inner-background"></div>
+                        <div class="row align-items-center inner-wrapper">
+                            <div class="col-md-6">
+                                <p>Là một Digital Creative Studio, Sun* luôn đề cao tinh thần làm chủ sản phẩm, tư duy sáng tạo trong mỗi dự án để mang đến những trải nghiệm "Awesome" nhất cho end-user. Với hai dòng dịch vụ là "Creative & Engineering" và "Talent Platform", Sun* đã và đang từng bước cùng công nghệ tạo ra những giá trị tốt đẹp cho xã hội.</p>
+                            </div>
+                            <div class="col-md-6">
+                                <img src="./assets/intro-business.png" alt="Business Image" class="img-fluid intro-image">
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-6">
-                        <img src="./assets/intro-business.png" alt="" class="img-fluid intro-img">
                     </div>
                 </div>
             </section>
 
             <section class="bussiness-signature row mt-5">
-                <div class="col-md-6">
-                    <div class="card text-center creative-sign">
-                        <div class="card-body">
-                            <div class="sub-title position-relative" data-en="Digital Creative Studio" data-vi="Digital Creative Studio">
-                                <div class="circle-sub-title"></div>Digital Creative Studio
-                            </div>
-                            <h1 class="card-title" data-en="Creative & Engineering" data-vi="Creative & Engineering">Creative & Engineering</h1>
-                            <p class="card-text" data-en="A team rich in technology, design, and business expertise." data-vi="Đội ngũ nhân lực dồi dào chuyên về công nghệ, thiết kế và kinh doanh.">A team rich in technology, design, and business expertise.</p>
-                            <button class="btn btn-light" data-en="Learn more" data-vi="Tìm hiểu thêm">Learn more</button>
+            <div class="col-md-6">
+                <div class="card text-center creative-sign p-4">
+                    <div class="card-body position-relative">
+                        <div class="sub-title position-relative mb-3">
+                            <div class="circle-sub-title"></div>Digital Creative Studio
                         </div>
+                        <h1 class="card-title mb-3">Creative & Engineering</h1>
+                        <p class="card-text mb-4">Đội ngũ nhân lực dồi dào chuyên về công nghệ, thiết kế và kinh doanh.</p>
+                        <button class="btn btn-light px-5 py-2">Tìm hiểu thêm</button>
+                        <div class="circle-decoration circle-red circle-large" style="top: -3rem; right: 5rem;"></div>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="card text-center">
-                        <div class="card-body">
-                            <div class="sub-title position-relative" data-en="Digital Creative Studio" data-vi="Digital Creative Studio">
-                                <div class="circle-sub-title"></div>Digital Creative Studio
-                            </div>
-                            <h1 class="card-title" data-en="Talent Platform" data-vi="Talent Platform">Talent Platform</h1>
-                            <p class="card-text" data-en="HR solutions that support sustainable business growth." data-vi="Các giải pháp nguồn nhân lực hỗ trợ tăng trưởng kinh doanh bền vững.">HR solutions that support sustainable business growth.</p>
-                            <button class="btn btn-primary" data-en="Learn more" data-vi="Tìm hiểu thêm">Learn more</button>
+            </div>
+            <div class="col-md-6">
+                <div class="card text-center talent-sign p-4">
+                    <div class="card-body position-relative">
+                        <div class="sub-title position-relative mb-3">
+                            <div class="circle-sub-title"></div>Digital Creative Studio
                         </div>
+                        <h1 class="card-title mb-3">Talent Platform</h1>
+                        <p class="card-text mb-4">Các giải pháp nguồn nhân lực hỗ trợ tăng trưởng kinh doanh bền vững.</p>
+                        <button class="btn px-5 py-2">Tìm hiểu thêm</button>
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <section class="project-intro mt-5">
-                <h1 data-en="Our Projects" data-vi="Dự án của chúng tôi">Our Projects</h1>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="project-static mb-3">
-                            <h1 class="static-number" id="partner-number">200</h1>
-                            <div>
-                                <h2 class="plus-sign">++</h2>
-                                <h3 class="static-sub-title" data-en="Partners" data-vi="Đối tác">Partners</h3>
+        <section class="project-intro mt-5">
+            <h1 class="mb-4" data-en="Our Projects" data-vi="Dự án của chúng tôi">Dự án của chúng tôi</h1>
+            <div class="row g-3">
+                <div class="col-md-6 d-flex flex-column justify-content-between">
+                    <div class="project-static mb-3">
+                        <h1 class="static-number" id="partner-number">200</h1>
+                        <div>
+                            <span class="plus-sign">++</span>
+                            <h3 class="static-sub-title" data-en="Partners" data-vi="Đối tác">Đối tác</h3>
+                        </div>
+                    </div>
+                    <div class="project-static mb-3">
+                        <h1 class="static-number" id="product-number">300</h1>
+                        <div>
+                            <span class="plus-sign">++</span>
+                            <h3 class="static-sub-title" data-en="Supported Services" data-vi="Dịch vụ được hỗ trợ">Dịch vụ được hỗ trợ</h3>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary w-100 mt-auto" data-en="View all projects" data-vi="Xem tất cả dự án">Xem tất cả dự án</button>
+                </div>
+                <div class="col-md-6">
+                    <div id="projectCarousel" class="carousel slide" data-ride="carousel" data-interval="3000">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="./assets/project1.png" class="d-block w-100" alt="Project 1">
+                                <div class="overlay"></div>
+                                <div class="carousel-caption">
+                                    <h5>Kurashicom Inc</h5>
+                                    <p>Dự án KURASHICOM<br>Phát triển App giúp hiện thực hóa phong cách sống theo ý muốn</p>
+                                    <a href="#" class="btn btn-danger">Xem chi tiết</a>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img src="./assets/project2.png" class="d-block w-100" alt="Project 2">
+                                <div class="overlay"></div>
+                                <div class="carousel-caption">
+                                    <h5>Công ty TNHH SSK</h5>
+                                    <p>Dự án SSK<br>Thử thách để tiếp thêm năng lượng cho mọi người và xã hội với sports data</p>
+                                    <a href="#" class="btn btn-danger">Xem chi tiết</a>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img src="./assets/project3.png" class="d-block w-100" alt="Project 3">
+                                <div class="overlay"></div>
+                                <div class="carousel-caption">
+                                    <h5>Công ty TNHH ZENKIGEN</h5>
+                                    <p>Dự án HARUTAKA<br>“HARUTAKA” cho phép các công ty và người tìm việc có thể phỏng vấn</p>
+                                    <a href="#" class="btn btn-danger">Xem chi tiết</a>
+                                </div>
                             </div>
                         </div>
-                        <div class="project-static mb-3">
-                            <h1 class="static-number" id="product-number">300</h1>
-                            <div>
-                                <h2 class="plus-sign">++</h2>
-                                <h3 class="static-sub-title" data-en="Supported Services" data-vi="Dịch vụ được hỗ trợ">Supported Services</h3>
-                            </div>
+                        <div class="d-flex justify-content-center mt-2">
+                            <a class="carousel-control-prev" href="#projectCarousel" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only"></span>
+                            </a>
+                            <a class="carousel-control-next ml-2" href="#projectCarousel" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only"></span>
+                            </a>
                         </div>
-                        <button class="btn btn-primary w-100" data-en="View all projects" data-vi="Xem tất cả dự án">View all projects</button>
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
 
             <section class="career-intro mt-5 position-relative rounded-3 overflow-hidden">
                 <img src="./assets/portrait-professional-business-people-working-together.jpg" alt="" class="img-fluid">
@@ -272,90 +429,105 @@
                         <h2>Sun Asterisk</h2>
                         <h1 data-en="Career Opportunities" data-vi="Cơ hội nghề nghiệp">Career Opportunities</h1>
                     </div>
-                    <h1 class="mt-5" data-en="Join us & MAKE AWESOME THINGS THAT MATTER." data-vi="Join us & MAKE AWESOME THINGS THAT MATTER.">Join us & MAKE AWESOME THINGS THAT MATTER.</h1>
-                    <h5 class="mt-3" data-en="Sun* is always looking for passionate individuals ready to take on challenges and create 'Awesome' values. Become a part of Sun* today." data-vi="Sun* luôn tìm kiếm những con người đam mê thử thách để tạo nên những giá trị 'Awesome'. Cùng trở thành một phần của Sun* ngay hôm nay.">
-                        Sun* is always looking for passionate individuals ready to take on challenges and create 'Awesome' values. Become a part of Sun* today.
+                    <h1 class="mt-5" data-en="Join us & MAKE AWESOME THINGS THAT MATTER."
+                        data-vi="Join us & MAKE AWESOME THINGS THAT MATTER.">Join us & MAKE AWESOME THINGS THAT MATTER.
+                    </h1>
+                    <h5 class="mt-3" data-en="Sun* is always looking for passionate individuals ready to take on challenges and create 'Awesome' values. Become a part of Sun* today."
+                        data-vi="Sun* luôn tìm kiếm những con người đam mê thử thách để tạo nên những giá trị 'Awesome'. Cùng trở thành một phần của Sun* ngay hôm nay.">
+                        Sun* is always looking for passionate individuals ready to take on challenges and create 'Awesome'
+                        values. Become a part of Sun* today.
                     </h5>
                     <button class="btn btn-light text-danger mt-3" data-en="Join the Sun* Team" data-vi="Gia nhập đội ngũ của Sun*">Join the Sun* Team</button>
                 </div>
             </section>
 
             <section class="environment mt-5">
-                <h1 class="section-title" data-en="Working Environment" data-vi="Môi trường làm việc">Working Environment</h1>
+                <h1 class="section-title" data-en="Working Environment" data-vi="Môi trường làm việc">Working
+                    Environment</h1>
                 <div class="d-flex flex-column flex-md-row align-items-center gap-3">
                     <div class="slogan-list w-100 w-md-60 d-flex flex-column gap-3">
-                        <div class="slogan-item d-flex gap-3 align-items-center" data-en="#ActiveChallenge: Proactively create challenging tasks for yourself." data-vi="#ActiveChallenge: Chủ động tạo ra công việc thử thách liên tục cho bản thân.">
-                            <svg width="50px" height="40px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M4 12.6111L8.92308 17.5L20 6.5" stroke="#c01111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <div class="slogan-item d-flex gap-3 align-items-center"
+                            data-en="#ActiveChallenge: Proactively create challenging tasks for yourself."
+                            data-vi="#ActiveChallenge: Chủ động tạo ra công việc thử thách liên tục cho bản thân.">
+                            <svg width="50px" height="40px" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M4 12.6111L8.92308 17.5L20 6.5" stroke="#c01111" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
                             <p class="flex-grow-1">#ActiveChallenge: Proactively create challenging tasks for yourself.</p>
                         </div>
-                        <div class="slogan-item d-flex gap-3 align-items-center" data-en="#ActiveLearn: Learning in an organization that has all the elements: learning environment, learning opportunities, and learning capacity." data-vi="#ActiveLearn: Học tập trong một tổ chức có đầy đủ các thành tố: môi trường học tập, cơ hội học tập, năng lực học tập.">
-                            <svg width="50px" height="40px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M4 12.6111L8.92308 17.5L20 6.5" stroke="#c01111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <div class="slogan-item d-flex gap-3 align-items-center"
+                            data-en="#ActiveLearn: Learning in an organization that has all the elements: learning environment, learning opportunities, and learning capacity."
+                            data-vi="#ActiveLearn: Học tập trong một tổ chức có đầy đủ các thành tố: môi trường học tập, cơ hội học tập, năng lực học tập.">
+                            <svg width="50px" height="40px" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M4 12.6111L8.92308 17.5L20 6.5" stroke="#c01111" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
-                            <p class="flex-grow-1">#ActiveLearn: Learning in an organization that has all the elements: learning environment, learning opportunities, and learning capacity.</p>
+                            <p class="flex-grow-1">#ActiveLearn: Learning in an organization that has all the elements:
+                                learning environment, learning opportunities, and learning capacity.</p>
                         </div>
-                        <div class="slogan-item d-flex gap-3 align-items-center" data-en="#ActiveJoy: Living in a cultural environment that aims for human values and happiness for everyone." data-vi="#ActiveJoy: Sống trong môi trường văn hóa hướng tới giá trị nhân văn, và hạnh phúc cho mọi người.">
-                            <svg width="50px" height="40px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M4 12.6111L8.92308 17.5L20 6.5" stroke="#c01111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <div class="slogan-item d-flex gap-3 align-items-center"
+                            data-en="#ActiveJoy: Living in a cultural environment that aims for human values and happiness for everyone."
+                            data-vi="#ActiveJoy: Sống trong môi trường văn hóa hướng tới giá trị nhân văn, và hạnh phúc cho mọi người.">
+                            <svg width="50px" height="40px" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M4 12.6111L8.92308 17.5L20 6.5" stroke="#c01111" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
-                            <p class="flex-grow-1">#ActiveJoy: Living in a cultural environment that aims for human values and happiness for everyone.</p>
+                            <p class="flex-grow-1">#ActiveJoy: Living in a cultural environment that aims for human values
+                                and happiness for everyone.</p>
                         </div>
                     </div>
-                    <img src="./assets/human-centered.png" alt="" class="img-fluid w-100 w-md-40">
+                    <img src="./assets/human-centered.png" alt="" class="img-fluid w-50 w-md-40">
                 </div>
             </section>
         </div>
     </div>
 
-    <footer class="footer bg-light py-5 mt-5">
-        <div class="container d-flex flex-column flex-md-row align-items-center gap-3">
-            <img src="./assets/logo-sun@2x.png" alt="" class="footer-img">
-            <div class="contact-infor">
-                <div class="footer-row d-flex flex-column flex-md-row gap-5">
-                    <div class="footer-column">
-                        <h2 data-en="Who are we?" data-vi="Chúng tôi là ai?">Chúng tôi là ai?</h2>
-                        <ul>
-                            <li><a href="" data-en="Vision, Mission" data-vi="Tầm nhìn, sứ mệnh">Tầm nhìn, sứ mệnh</a></li>
-                            <li><a href="" data-en="Core Values" data-vi="Giá trị cốt lõi">Giá trị cốt lõi</a></li>
-                            <li><a href="" data-en="Meaning of Sun*'s Name" data-vi="Ý nghĩa tên Sun*">Ý nghĩa tên Sun*</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-column">
-                        <h2 data-en="What do we do?" data-vi="Chúng tôi làm gì?">Chúng tôi làm gì?</h2>
-                        <ul>
-                            <li><a href="" data-en="Creative & Engineering" data-vi="Creative & Engineering">Creative & Engineering</a></li>
-                            <li><a href="" data-en="Talent Platform" data-vi="Talent Platform">Talent Platform</a></li>
-                            <li><a href="" data-en="Our Projects" data-vi="Dự án của chúng tôi">Dự án của chúng tôi</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-column">
-                        <h2 data-en="News Update" data-vi="Cập nhật tin tức">Cập nhật tin tức</h2>
-                        <ul>
-                            <li><a href="" data-en="Culture - Events" data-vi="Văn hóa - Sự kiện">Văn hóa - Sự kiện</a></li>
-                            <li><a href="" data-en="Recruitment" data-vi="Tuyển dụng">Tuyển dụng</a></li>
-                            <li><a href="" data-en="Welfare Policy" data-vi="Chính sách phúc lợi">Chính sách phúc lợi</a></li>
-                        </ul>
-                    </div>
+    <footer class="footer">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-3 mb-4">
+                    <img src="./assets/logo-sun@2x.png" alt="Sun* Logo" class="img-fluid" style="max-width: 150px;">
                 </div>
-                <div class="footer-row d-flex flex-column flex-md-row gap-5">
-                    <div class="footer-column">
-                        <h2 data-en="Contact" data-vi="Liên hệ">Liên hệ</h2>
-                        <ul>
-                            <li><a href="" data-en="Phone: 84-24-3795-5417" data-vi="SĐT: 84-24-3795-5417">SĐT: 84-24-3795-5417</a></li>
-                            <li><a href="" data-en="Email: hr@sun-asterisk.com" data-vi="Email: hr@sun-asterisk.com">Email: hr@sun-asterisk.com</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-column">
-                        <h2 data-en="Offices" data-vi="Văn phòng">Văn phòng</h2>
-                        <ul>
-                            <li><a href="" data-en="T13, Keangnam Hanoi Landmark Tower, E6 Area, Cau Giay New Urban Area, Me Tri Ward, Nam Tu Liem District, Hanoi" data-vi="T13, Keangnam Hanoi Landmark Tower, khu E6, khu ĐTM Cầu Giấy, phường Mễ Trì, quận Nam Từ Liêm, Hà Nội">T13, Keangnam Hanoi Landmark Tower, khu E6, khu ĐTM Cầu Giấy, phường Mễ Trì, quận Nam Từ Liêm, Hà Nội</a></li>
-                            <li><a href="" data-en="4th Floor, FHome Building, 16 Ly Thuong Kiet, Hai Chau District, Da Nang City" data-vi="Tầng 4, tòa FHome Building, số 16 Lý Thường Kiệt, quận Hải Châu, Tp. Đà Nẵng">Tầng 4, tòa FHome Building, số 16 Lý Thường Kiệt, quận Hải Châu, Tp. Đà Nẵng</a></li>
-                            <li><a href="" data-en="9th Floor, L'Mak Long Tower, 101-103 Nguyen Cuu Van, Ward 17, Binh Thanh District, Ho Chi Minh City" data-vi="Tầng 9, L'Mak Long Tower, số 101-103 Nguyễn Cửu Vân, Phường 17, Quận Bình Thạnh, Thành phố Hồ Chí Minh">Tầng 9, L'Mak Long Tower, số 101-103 Nguyễn Cửu Vân, Phường 17, Quận Bình Thạnh, Thành phố Hồ Chí Minh</a></li>
-                            <li><a href="" data-en="Tokyo Office - Cebu Office - Phnom Penh Office" data-vi="Văn phòng Tokyo - Văn phòng Cebu - Văn phòng Phnom Penh">Văn phòng Tokyo - Văn phòng Cebu - Văn phòng Phnom Penh</a></li>
-                        </ul>
-                    </div>
+                <div class="col-md-3 mb-4">
+                    <h5 class="section-title"><span>Chúng tôi là ai?</span></h5>
+                    <ul class="list-unstyled">
+                        <li>Tầm nhìn, sứ mệnh</li>
+                        <li>Giá trị cốt lõi</li>
+                        <li>Ý nghĩa tên Sun*</li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h5 class="section-title"><span>Chúng tôi làm gì?</span></h5>
+                    <ul class="list-unstyled">
+                        <li>Creative & Engineering</li>
+                        <li>Talent Platform</li>
+                        <li>Dự án của chúng tôi</li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h5 class="section-title"><span>Cập nhật tin tức</span></h5>
+                    <ul class="list-unstyled">
+                        <li>Văn hóa - Sự kiện</li>
+                        <li>Tuyển dụng</li>
+                        <li>Chính sách phúc lợi</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 mb-4 offset-md-3">
+                    <h5 class="section-title"><span>Liên hệ</span></h5>
+                    <p>SDT: 84-24-3795-5417</p>
+                    <p>Email: hr@sun-asterisk.com</p>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <h5 class="section-title"><span>Văn phòng</span></h5>
+                    <p>T13, Keangnam Hanoi Landmark Tower, khu E6, khu ĐTM Cầu Giấy, phường Mễ Trì, quận Nam Từ Liêm, Hà Nội</p>
+                    <p>Tầng 4, tòa FHome Building, số 16 Lý Thường Kiệt, quận Hải Châu, Tp. Đà Nẵng</p>
+                    <p>Tầng 9, L'Mak Long Tower, số 101-103 Nguyễn Cửu Vân, Phường 17, Quận Bình Thạnh, Thành phố Hồ Chí Minh</p>
+                    <p>Văn phòng Tokyo - Văn phòng Cebu - Văn phòng Phnom Penh</p>
                 </div>
             </div>
         </div>
@@ -397,6 +569,12 @@
         });
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./main.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 </body>
+
 </html>
 
